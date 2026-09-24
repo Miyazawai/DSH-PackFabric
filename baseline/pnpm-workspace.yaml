@@ -1,0 +1,16 @@
+# 官方包 profile 的包管理器配置（与既有官方包一致，只去掉 cloudflared 的构建许可）。
+#
+# nodeLinker: hoisted —— node_modules 平铺，快照导入端不跑包管理器，解开即用。
+# allowBuilds —— 只放行出包必需的原生模块构建。
+#
+# 注意没有放行 cloudflared：它的 postinstall 会从 GitHub 拉一个约 40MB 的二进制，
+# 既有官方包里从来没有这个文件（运行时由插件按需获取），放行只会让出包多等、
+# 包体积凭空变大。链接器会直接跳过它。
+packages:
+  - .
+nodeLinker: hoisted
+autoInstallPeers: false
+allowBuilds:
+  cpu-features@0.0.10: true
+  node-pty@1.1.0: true
+  ssh2@1.17.0: true

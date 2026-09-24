@@ -1,0 +1,6 @@
+pet:
+  visible: true
+  size: 160
+  right: 35
+  bottom: 39
+  petId: whale-girl

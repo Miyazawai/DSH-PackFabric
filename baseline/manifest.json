@@ -1,0 +1,30 @@
+{
+  "$comment": "官方默认整合包的受控基线：构建脚本 scripts/build-official-pack.mts 按这里组装 staging 家目录。改内容就改这里，不要在脚本里写死。",
+  "profileId": "pack-test",
+  "displayNamePrefix": "官方默认整合包",
+  "coreBundles": [
+    "@deepseek-ai/dsh-base",
+    "@deepseek-ai/dsh-web-app"
+  ],
+  "webUiPackage": "@linxin666/dsh-web-all",
+  "skills": [
+    "find-skills",
+    "humanizer-zh",
+    "officecli",
+    "officecli-docx",
+    "officecli-pptx",
+    "officecli-xlsx"
+  ],
+  "officeCli": {
+    "repository": "iOfficeAI/OfficeCLI",
+    "assetName": "officecli-win-x64.exe",
+    "targetPath": "tools/officecli/officecli.exe",
+    "$comment": "tag 默认取 latest；出问题时用 workflow_dispatch 的 officecli-tag 输入钉回旧版",
+    "defaultTag": "latest"
+  },
+  "versionScheme": {
+    "$comment": "官方包版本号 = 适配的 DSH 版本 + 序号，用户看版本号就知道适配哪个 DSH",
+    "template": "{dshVersion}.{serial}",
+    "defaultSerial": 1
+  }
+}
